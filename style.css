@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Style the header */
+  header {
+    background-color: yellow;
+    padding: 30px;
+    text-align: center;
+    color: black;
+    border-style: solid;
+    border-radius: 5px;
+  }
+  .desc{
+    font-size: 25px;
+  }
+  
+  /* Container for flexboxes */
+  section {
+    display: -webkit-flex;
+    display: flex;
+  }
+  
+  /* Style the navigation menu */
+  nav {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 20px;
+  }
+  nav.sticky {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      background-color: yellow;
+    }
+  /* Style the list inside the menu */
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Style the content */
+  article {
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 10px;
+    border-color: black;
+    border-radius: 20px;
+    border: #777;
+    border-style: solid;
+
+  }
+  
+  li{
+      border-radius: 5px;
+      background-color: yellow;
+      margin-bottom: 5px;
+      padding: 15px;
+      color: black;
+      border-style: solid;
+  
+    }
+  a{
+      text-decoration: none;
+      color: brown;
+      font-size: 20px;
+  }
+  h1{
+    font-size: 30px;
+  }
+  /* Style the footer */
+  footer {
+    background-color: yellow;
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+  @media (max-width: 600px) {
+    section {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+  }
