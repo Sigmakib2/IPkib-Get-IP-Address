@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (secondsLeft === 0) {
                             clearInterval(countdownInterval);
                             // Redirect to the desired page after completing the countdown
-                            window.location.href = "/sakib.html"; // Replace with the URL of the desired page
+                            window.location.href = "https://github.com/Sigmakib2/IPkib-Get-IP-Address"; // Replace with the URL of the desired page
                         }
                     }, 1000);
                 });
