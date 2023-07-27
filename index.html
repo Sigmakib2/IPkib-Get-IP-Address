@@ -5,7 +5,137 @@
     <title>IPkib - Get IP Address</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  header {
+    background-color: yellow;
+    padding: 30px;
+    text-align: center;
+    color: black;
+    border-style: solid;
+    border-radius: 5px;
+  }
+  .desc{
+    font-size: 25px;
+  }
+
+  section {
+    display: -webkit-flex;
+    display: flex;
+  }
+  nav {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 20px;
+  }
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  article {
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 10px;
+    border-color: black;
+    border-radius: 20px;
+    border: #777;
+    border-style: solid;
+
+  }
+  li{
+      border-radius: 5px;
+      background-color: yellow;
+      margin-bottom: 5px;
+      padding: 15px;
+      color: black;
+      border-style: solid;
+  
+    }
+  a{
+      text-decoration: none;
+      color: brown;
+      font-size: 20px;
+  }
+  h1{
+    font-size: 30px;
+  }
+  footer {
+    background-color: yellow;
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  @media (max-width: 600px) {
+    section {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+  }
+
+  .container {
+      text-align: center;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 400px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      width: 100%;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #generatedUrl {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #urlOutput {
+      width: 100%;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    #copyButton {
+      background-color: #008CBA;
+    }
+
+    #copyButton:hover {
+      background-color: #007A9B;
+    }
+    </style>
 </head>
 
 <body>
@@ -14,12 +144,14 @@
         <p class="desc">Get the IP address of anyone using a link. Share the link with the target and then get the
             target's IP address on Discord using webhook.</p>
         <small>Developed by <a href="https://twitter.com/sigmakib"><b><u>Sigmakib</u></b></a></small>
+        <h6>IPkib V 0.1</h6>
     </header>
 
     <section>
         <nav>
             <ul>
                 <li><a href="#">Before You Use</a></li>
+                <li><a href="#otg">Test Using API</a></li>
                 <li><a href="#">How To Setup</a></li>
                 <li><a href="#">How To Host</a></li>
             </ul>
@@ -41,7 +173,8 @@
             <p>When using this tool, you, the user, must act responsibly and within the bounds of the law. Here are some
                 key points to keep in mind:</p>
 
-            <p><b>Legal Compliance:</b> Ensure that you comply with all applicable laws and regulations regarding internet
+            <p><b>Legal Compliance:</b> Ensure that you comply with all applicable laws and regulations regarding
+                internet
                 usage and data privacy. Unauthorized access or intrusion into someone&apos;s computer system is illegal
                 and can lead to severe consequences.</p>
 
@@ -52,10 +185,12 @@
             <p><b>Ethical Use:</b> Utilize this tool solely for educational purposes, legitimate network analysis, or
                 understanding how IP addresses and device information function in the context of networking.</p>
 
-            <p><b>Non-Harmful Intent:</b> Refrain from using this tool with the intent to cause harm, defraud, or engage in any
+            <p><b>Non-Harmful Intent:</b> Refrain from using this tool with the intent to cause harm, defraud, or engage
+                in any
                 form of cyberbullying or harassment.</p>
 
-            <p><b>Responsible Disclosure:</b> If you discover any potential vulnerabilities or weaknesses while using this
+            <p><b>Responsible Disclosure:</b> If you discover any potential vulnerabilities or weaknesses while using
+                this
                 tool, we encourage you to report them responsibly to the affected parties or the tool&apos;s developers.
             </p>
 
@@ -63,15 +198,63 @@
                 and legally. The creators of this tool disclaim any liability for any misuse or inappropriate actions
                 taken by users.</p>
 
-            <p>Remember, responsible usage of technology promotes a safer and more secure digital environment for
+            <p>Remember, responsible usage of technology promotes a safer and more secure digital environment
+                for
                 everyone. Let&apos;s contribute positively to the technological landscape and use our knowledge to
                 empower and protect others.</p>
+
+            <h2 id="otg">Test This API With Your Discord Webhook</h2>
+
+            <div class="container">
+                <form id="inputForm">
+                    <label for="webhookUrl">Discord Webhook URL:</label>
+                    <input type="text" id="webhookUrl" required>
+                    <br>
+                    <label for="destinationUrl">Destination Link:</label>
+                    <input type="text" id="destinationUrl" required>
+                    <br>
+                    <button type="button" id="generateUrlButton">Generate URL</button>
+                </form>
+                <div id="generatedUrl" style="display: none;">
+                    <p>Generated URL:</p>
+                    <input type="text" id="urlOutput" readonly>
+                    <button type="button" id="copyButton">Copy URL</button>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const generateUrlButton = document.getElementById("generateUrlButton");
+                    const copyButton = document.getElementById("copyButton");
+                    const webhookInput = document.getElementById("webhookUrl");
+                    const destinationInput = document.getElementById("destinationUrl");
+                    const generatedUrlDiv = document.getElementById("generatedUrl");
+                    const urlOutput = document.getElementById("urlOutput");
+
+                    generateUrlButton.addEventListener("click", function () {
+                        const webhookUrl = encodeURIComponent(webhookInput.value);
+                        const destinationUrl = encodeURIComponent(destinationInput.value);
+                        const generatedUrl = `${'https://ipkib.netlify.app/api/discord-api.html'}?webhook=${webhookUrl}&redirect=${destinationUrl}`;
+
+                        urlOutput.value = generatedUrl;
+                        generatedUrlDiv.style.display = "block";
+                    });
+
+                    copyButton.addEventListener("click", function () {
+                        urlOutput.select();
+                        document.execCommand("copy");
+                        alert("URL copied to clipboard!");
+                    });
+                });
+
+            </script>
 
         </article>
     </section>
 
     <footer>
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        <p style="color: black;">A project by Sigmakib using <a style="font-size: 18px;"
+                href="https://www.ipify.org/">ipify API</a></p>
     </footer>
 
 </body>
