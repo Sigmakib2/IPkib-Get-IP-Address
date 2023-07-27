@@ -3,6 +3,8 @@ Get the IP address of anyone using a link. Share the link with the target and th
 
 For now, use it like this:
 
-https://ipkib.netlify.app/api?webhook=[YOUR DISCORD WEBHOOK URL]
+https://ipkib.netlify.app/#otg
+
+--
 
 I am working on the documentation! Soon it will be live. Keep tracking.....
